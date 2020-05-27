@@ -5,4 +5,4 @@
 layout: home
 ---
 
-{% include BasicLte.svg %}
+{% include BasicLte.html %}
