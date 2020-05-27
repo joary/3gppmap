@@ -53,12 +53,12 @@
     function handler_text(ev) {
         var target = $(ev.target);
         var elId = target.parent().attr('id');
-        if( target.is("tspan") ) {
+        if( target.is("ellipse")) {
            console.log('The mouse was over'+ elId );
            var content = get_block_details(elId)
            console.log('Block '+ elId +" content" + content);
            $("#details").load(content)
         }
     }
-    $("tspan").mouseenter(handler_text);
+    $("ellipse").mouseenter(handler_text);
 </script>
