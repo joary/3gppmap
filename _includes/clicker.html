@@ -1,24 +1,25 @@
 <script>
     function get_block_details(block_id) {
         var file_to_load = {
-            "hss": "assets/blocks/hss.html",
-            "pdn_gw": "assets/blocks/pdn_gw.html",
-            //"serving_gw": "HSS",
-            //"mme": "HSS",
-            //"eNB": "HSS",
-            //"x2": "HSS",
-            //"s1-mme": "HSS",
-            //"s11": "HSS",
-            //"s6a": "HSS",
-            //"LTE": "HSS",
-            //"UDR": "HSS",
-            //"Ud": "HSS",
-            //"s1-u": "HSS",
-            //"erternal_ip_network": "HSS",
-            //"s5-s8": "HSS"
+            "hss": "hss.html",
+            "pdn_gw": "pdn_gw.html",
+            "serving_gw": "serving_gw.html",
+            "mme": "mme.html",
+            "eNB": "eNB.html",
+            "x2": "x2.html",
+            "s1-mme": "s1-mme.html",
+            "s11": "s11.html",
+            "s6a": "s6a.html",
+            "LTE": "LTE.html",
+            "UDR": "UDR.html",
+            "Ud": "Ud.html",
+            "s1-u": "s1-u.html",
+            "external_ip_network": "erternal_ip_network.html",
+            "s5-s8": "s5-s8.html",
+            "sgi": "sgi.html"
         }
 
-        target_content = file_to_load[block_id]
+        target_content = "assets/blocks/" + file_to_load[block_id]
         if (target_content == undefined) {
             return "assets/blocks/undefined.html"
         }
@@ -48,4 +49,16 @@
         }
     }
     $("polyline").mouseenter(handler2);
+
+    function handler_text(ev) {
+        var target = $(ev.target);
+        var elId = target.parent().attr('id');
+        if( target.is("tspan") ) {
+           console.log('The mouse was over'+ elId );
+           var content = get_block_details(elId)
+           console.log('Block '+ elId +" content" + content);
+           $("#details").load(content)
+        }
+    }
+    $("tspan").mouseenter(handler_text);
 </script>
