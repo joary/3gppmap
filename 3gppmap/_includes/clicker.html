@@ -1,10 +1,38 @@
 <script>
+    function get_block_details(block_id) {
+        var file_to_load = {
+            "hss": "blocks/hss.html",
+            "pdn_gw": "blocks/pdn_gw.html",
+            //"serving_gw": "HSS",
+            //"mme": "HSS",
+            //"eNB": "HSS",
+            //"x2": "HSS",
+            //"s1-mme": "HSS",
+            //"s11": "HSS",
+            //"s6a": "HSS",
+            //"LTE": "HSS",
+            //"UDR": "HSS",
+            //"Ud": "HSS",
+            //"s1-u": "HSS",
+            //"erternal_ip_network": "HSS",
+            //"s5-s8": "HSS"
+        }
+
+        target_content = file_to_load[block_id]
+        if (target_content == undefined) {
+            return "blocks/undefined.html"
+        }
+
+        return target_content
+    }
+
     function handler(ev) {
         var target = $(ev.target);
         var elId = target.parent().attr('id');
         if( target.is("rect") ) {
-           console.log('Block'+ elId );
-           $("#details").html("<h1>"+elId+"</h1>")
+           var content = get_block_details(elId)
+           console.log('Block '+ elId +" content " + content);
+           $("#details").load(content)
         }
     }
     $("rect").mouseenter(handler);
@@ -14,7 +42,9 @@
         var elId = target.attr('id');
         if( target.is("polyline") ) {
            console.log('The mouse was over'+ elId );
-           $("#details").html("<h1>"+elId+"</h1>")
+           var content = get_block_details(elId)
+           console.log('Block '+ elId +" content" + content);
+           $("#details").load(content)
         }
     }
     $("polyline").mouseenter(handler2);
