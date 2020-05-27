@@ -22,8 +22,8 @@ title: 3GPP MAP
 email: joarypl@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A map with the network blocks and interfaces as described by 3gpp specifications
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/3gppmap" # the subpath of your site, e.g. /blog
+url: "joary.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: joary
 github_username:  joary
 
