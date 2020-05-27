@@ -1,1 +1,6 @@
 *.dia~
+*.autosave
+*.tex
+*.py
+*.dot
+*.java

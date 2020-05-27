@@ -1,0 +1,21 @@
+<script>
+    function handler(ev) {
+        var target = $(ev.target);
+        var elId = target.parent().attr('id');
+        if( target.is("rect") ) {
+           console.log('Block'+ elId );
+           $("#details").html("<h1>"+elId+"</h1>")
+        }
+    }
+    $("rect").mouseenter(handler);
+
+    function handler2(ev) {
+        var target = $(ev.target);
+        var elId = target.attr('id');
+        if( target.is("polyline") ) {
+           console.log('The mouse was over'+ elId );
+           $("#details").html("<h1>"+elId+"</h1>")
+        }
+    }
+    $("polyline").mouseenter(handler2);
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+  {%- include my_js.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper" style="float:left;">
+        {{ content }}
+      </div>
+      
+      <div style="float:left;" id="details">
+        Details
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+    {%- include clicker.html -%}
+
+  </body>
+
+</html>
