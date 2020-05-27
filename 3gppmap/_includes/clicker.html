@@ -1,8 +1,8 @@
 <script>
     function get_block_details(block_id) {
         var file_to_load = {
-            "hss": "blocks/hss.html",
-            "pdn_gw": "blocks/pdn_gw.html",
+            "hss": "assets/blocks/hss.html",
+            "pdn_gw": "assets/blocks/pdn_gw.html",
             //"serving_gw": "HSS",
             //"mme": "HSS",
             //"eNB": "HSS",
@@ -20,7 +20,7 @@
 
         target_content = file_to_load[block_id]
         if (target_content == undefined) {
-            return "blocks/undefined.html"
+            return "assets/blocks/undefined.html"
         }
 
         return target_content
