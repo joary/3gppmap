@@ -1,3 +1,3 @@
-# LTE - LTE Radio Access Network:
+# E-UTRAN: evolved UMTS Terrestrial Radio Access Network
 
 Comming Soon ...
