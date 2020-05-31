@@ -27,10 +27,14 @@ url: "joary.github.io" # the base hostname & protocol for your site, e.g. http:/
 twitter_username: joary
 github_username:  joary
 
+header_pages:
+ - about.md
+
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
