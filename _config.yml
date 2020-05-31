@@ -28,7 +28,7 @@ twitter_username: joary
 github_username:  joary
 
 header_pages:
- - about.md
+ - about
 
 # Build settings
 theme: minima
