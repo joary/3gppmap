@@ -1,39 +1,56 @@
 <script>
-    function get_block_details(block_id) {
+    var current_content = "default"
+    function set_block_details(block_id) {
         var file_to_load = {
-            "hss": "hss.html",
-            "pdn_gw": "pdn_gw.html",
-            "serving_gw": "serving_gw.html",
-            "mme": "mme.html",
-            "eNB": "eNB.html",
-            "x2": "x2.html",
-            "s1-mme": "s1-mme.html",
-            "s11": "s11.html",
-            "s6a": "s6a.html",
-            "LTE": "LTE.html",
-            "UDR": "UDR.html",
-            "Ud": "Ud.html",
-            "s1-u": "s1-u.html",
-            "external_ip_network": "erternal_ip_network.html",
-            "s5-s8": "s5-s8.html",
-            "sgi": "sgi.html"
+            "hss": "hss.md",
+            "pdn_gw": "pdn_gw.md",
+            "serving_gw": "serving_gw.md",
+            "mme": "mme.md",
+            "eNB": "eNB.md",
+            "x2": "x2.md",
+            "s1-mme": "s1-mme.md",
+            "s11": "s11.md",
+            "s6a": "s6a.md",
+            "LTE": "LTE.md",
+            "UDR": "UDR.md",
+            "Ud": "Ud.md",
+            "s1-u": "s1-u.md",
+            "external_ip_network": "erternal_ip_network.md",
+            "s5-s8": "s5-s8.md",
+            "sgi": "sgi.md"
+        }
+
+        if (block_id == current_content){
+            // Do nothing since we are already in the target content
+            return
+        } else {
+            current_content = block_id
         }
 
         target_content = "assets/blocks/" + file_to_load[block_id]
         if (target_content == undefined) {
-            return "assets/blocks/undefined.html"
+            target_content = "assets/blocks/undefined.html"
         }
 
-        return target_content
+        $.ajax({
+            url: target_content,
+            context: document.body,
+            success: function(mdText){
+                //where text will be the text returned by the ajax call
+                var converter = new showdown.Converter();
+                var htmlText = converter.makeHtml(mdText);
+                $("#details").html(htmlText); //append this to a div with class outputDiv
+            }
+        });
     }
 
     function handler(ev) {
         var target = $(ev.target);
         var elId = target.parent().attr('id');
         if( target.is("rect") ) {
-           var content = get_block_details(elId)
+           var content = set_block_details(elId)
            console.log('Block '+ elId +" content " + content);
-           $("#details").load(content)
+           //$("#details").html(content)
         }
     }
     $("rect").mouseenter(handler);
@@ -43,9 +60,9 @@
         var elId = target.attr('id');
         if( target.is("polyline") ) {
            console.log('The mouse was over'+ elId );
-           var content = get_block_details(elId)
            console.log('Block '+ elId +" content" + content);
-           $("#details").load(content)
+           var content = set_block_details(elId)
+           //$("#details").html(content)
         }
     }
     $("polyline").mouseenter(handler2);
@@ -55,9 +72,9 @@
         var elId = target.parent().attr('id');
         if( target.is("ellipse")) {
            console.log('The mouse was over'+ elId );
-           var content = get_block_details(elId)
            console.log('Block '+ elId +" content" + content);
-           $("#details").load(content)
+           var content = set_block_details(elId)
+           //$("#details").html(content)
         }
     }
     $("ellipse").mouseenter(handler_text);
